@@ -60,7 +60,7 @@ struct CellContent: View {
     let elementSize: CGFloat = 70   // The size of the face-up element
     let overlayColor = Color(white: 0.4)    // The color of the overlay element and cell border
     
-    @State private var isFaceUp = true
+    @State private var isFaceUp = false
     
     //  Creates the frame that aligns the face-up element and the overlay
     struct CellBox: ViewModifier {
@@ -78,14 +78,19 @@ struct CellContent: View {
         ZStack {
             FaceUpElement(cellElement: cellElement, elementSize: elementSize)
                 .modifier(CellBox(elementSize: elementSize))
+                .opacity(isFaceUp ? 1 : 0)
             
             FaceDownElement(overlay: overlay, overlayColor: overlayColor, elementSize: elementSize)
                 .modifier(CellBox(elementSize: elementSize))
+                .opacity(isFaceUp ? 0 : 1)
         }
         .overlay {
             RoundedRectangle(cornerRadius: 20).stroke(overlayColor, lineWidth: 5)
         }
         .padding()
+        .onTapGesture {
+            isFaceUp = !isFaceUp
+        }
     }
 }
 
