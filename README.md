@@ -5,3 +5,5 @@ This SwiftUI project consists of a grid of cards. When the card is clicked, it w
 
 ## Authors
 jotakik
+
+https://github.com/user-attachments/assets/ddb77032-1240-4938-bcb8-f3dad1bc8c76
